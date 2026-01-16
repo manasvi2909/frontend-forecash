@@ -1,0 +1,122 @@
+/* src/pages/PersonalDetails.module.css */
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c4c4c4;
+    /* Grey background matching image */
+    font-family: 'Inter', sans-serif;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 3rem 3rem;
+    width: 500px;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* Let items align left naturally, text center specifically */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    color: #000;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #000;
+    text-align: left;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    text-align: left;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.row {
+    display: flex;
+    gap: 1rem;
+}
+
+.row>.inputGroup {
+    flex: 1;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: left;
+}
+
+.inputGroup label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #000;
+}
+
+.input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    font-size: 1rem;
+    color: #333;
+    outline: none;
+    transition: border 0.3s;
+}
+
+.input::placeholder {
+    color: #999;
+}
+
+.input:focus {
+    border-color: #999;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    /* Button on the right */
+    margin-top: 1rem;
+}
+
+.nextBtn {
+    padding: 10px 25px;
+    border-radius: 25px;
+    border: none;
+    background: #000;
+    /* Black button */
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.3s;
+}
+
+.nextBtn:hover {
+    background: #333;
+}
+
+.arrow {
+    font-size: 1.2rem;
+}

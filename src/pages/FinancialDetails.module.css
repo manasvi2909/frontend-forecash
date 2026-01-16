@@ -1,0 +1,177 @@
+/* src/pages/FinancialDetails.module.css */
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c4c4c4;
+    /* Grey background */
+    font-family: 'Inter', sans-serif;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 3rem 3rem;
+    width: 550px;
+    /* Slightly wider */
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    color: #000;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #000;
+    text-align: left;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 2rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: left;
+}
+
+.inputGroup label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #000;
+}
+
+.selectWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.select {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    font-size: 1rem;
+    color: #999;
+    outline: none;
+    appearance: none;
+    /* Remove default arrow */
+    cursor: pointer;
+}
+
+.selectArrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    pointer-events: none;
+}
+
+.tags {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.tag {
+    padding: 8px 20px;
+    border-radius: 20px;
+    background-color: #f0f0f0;
+    /* Light grey for unselected */
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tag:hover {
+    background-color: #e6e6e6;
+}
+
+.tagSelected {
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #82b38a;
+    /* Green matching image */
+    color: white;
+    border: 1px solid #82b38a;
+}
+
+.radioGroup {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.radioLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #333;
+    font-weight: 500;
+}
+
+.radioLabel input {
+    accent-color: #82b38a;
+    /* Green radio button */
+    width: 18px;
+    height: 18px;
+}
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.nextBtn {
+    padding: 10px 30px;
+    border-radius: 25px;
+    border: none;
+    background: #000;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.3s;
+}
+
+.nextBtn:hover {
+    background: #333;
+}
+
+.arrow {
+    font-size: 1.2rem;
+}

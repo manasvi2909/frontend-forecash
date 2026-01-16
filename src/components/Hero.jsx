@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ChipIcon from './ChipIcon';
 import styles from './Hero.module.css';
 
@@ -62,7 +63,7 @@ const Hero = () => {
       </div>
 
       <div className={styles.footer}>
-        Plan ahead with confidence. Sign Up
+        Plan ahead with confidence. <Link to="/login" className={styles.signUpLink}>Login</Link>
       </div>
     </div>
   );

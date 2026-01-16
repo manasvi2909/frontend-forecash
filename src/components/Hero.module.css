@@ -63,7 +63,7 @@
 
 .searchText {
     font-family: var(--font-sans);
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.8);
     font-weight: 300;
 }
@@ -119,4 +119,29 @@
     color: var(--color-text-secondary);
     margin-bottom: 1rem;
     font-weight: 300;
+}
+
+.span {
+    font-size: 4rem;
+}
+
+.signUpLink {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.signUpLink:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
