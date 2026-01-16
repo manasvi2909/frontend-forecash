@@ -1,0 +1,529 @@
+/* src/pages/Forecaster.module.css */
+
+.container {
+    display: flex;
+    height: 100vh;
+    background-color: #e6e6e6;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    overflow: hidden;
+}
+
+/* Sidebar (Reused) */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 90px;
+    background: rgba(235, 235, 235, 0.65);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0;
+    transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 1000;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    opacity: 0.9;
+}
+
+.sidebar:hover {
+    width: 320px;
+    background: rgba(240, 240, 240, 0.8);
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    margin-bottom: 3rem;
+    height: 60px;
+    white-space: nowrap;
+}
+
+.logoIcon {
+    width: 50px;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.logoLabel {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-left: 20px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    color: #333;
+}
+
+.sidebar:hover .logoLabel {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.logoLabel b {
+    color: #2e7d32;
+}
+
+.sidebarMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex: 1;
+}
+
+.menuItem {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-left: 20px;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    border-radius: 30px;
+}
+
+.activeItem {
+    background: #000;
+    color: #fff;
+    width: 50px;
+    overflow: hidden;
+    transition: width 0.4s ease;
+    padding-left: 12px;
+    border-radius: 12px;
+}
+
+.activeItem svg {
+    fill: #fff;
+    min-width: 24px;
+}
+
+.sidebar:hover .activeItem {
+    width: 260px;
+}
+
+.iconCircle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #fff;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+
+.iconCircle:hover {
+    transform: scale(1.05);
+}
+
+.activeIcon {
+    background: #000;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.menuLabel {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.1s;
+    color: #000;
+}
+
+.activeItem .menuLabel {
+    color: #fff;
+}
+
+.sidebar:hover .menuLabel {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.sidebarBottom {
+    padding-bottom: 2rem;
+    margin-top: auto;
+}
+
+/* MAIN LAYOUT */
+.main {
+    margin-left: 90px;
+    flex: 1;
+    padding: 1.5rem 2rem 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-y: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    height: 60px;
+}
+
+.brandTitle {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #333;
+    letter-spacing: -1px;
+}
+
+.brandTitle span {
+    color: #333;
+}
+
+.brandTitle b {
+    color: #2e7d32;
+}
+
+.headerControls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.controlBtn {
+    background: #fff;
+    border: none;
+    border-radius: 30px;
+    height: 45px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.userPill {
+    background: #fff;
+    border-radius: 30px;
+    padding: 5px 5px 5px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    font-weight: 600;
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* Grid Dashboard */
+.gridContainer {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    /* Equal rows, allow shrink */
+    gap: 15px;
+    height: 100%;
+    padding-bottom: 10px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 15px;
+    /* Tighter padding */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+    /* Important for flex/grid shrinking */
+    justify-content: space-between;
+}
+
+.cardTitle {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+/* Card 1: Cash Flow */
+.cashFlowHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.bigValue {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #000;
+}
+
+.greenBadge {
+    font-size: 0.75rem;
+    color: #2e7d32;
+    background: #e6f4ea;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 10px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.toggleGroup {
+    background: #aaa;
+    border-radius: 20px;
+    padding: 3px;
+    display: flex;
+}
+
+.toggleBtn {
+    padding: 4px 12px;
+    border-radius: 18px;
+    background: transparent;
+    color: #fff;
+    font-size: 0.75rem;
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+}
+
+.toggleActive {
+    background: #000;
+    color: #fff;
+    font-weight: 600;
+}
+
+.areaChartContainer {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    /* Clip SVG if needed */
+}
+
+.tooltip {
+    position: absolute;
+    top: 30%;
+    left: 25%;
+    background: #000;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #000 transparent transparent transparent;
+}
+
+.monthsRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: #aaa;
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+
+/* Card 2: Yearly Income */
+.donutContainer {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 0;
+}
+
+.donutChart {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: conic-gradient(#9cc6a5 0% 65%, #444 65% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.donutHole {
+    width: 100px;
+    height: 100px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.incomeTotalLabel {
+    font-size: 0.7rem;
+    color: #888;
+}
+
+.incomeTotalValue {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #000;
+}
+
+.donutLegend {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.legendItem {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.dotGreen {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #9cc6a5;
+}
+
+.dotGrey {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #444;
+}
+
+/* Card 3: Predicted vs Actual */
+.chartHeaderRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.legendCenter {
+    display: flex;
+    gap: 10px;
+}
+
+.legendChartItem {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+.lineLegendGreen {
+    width: 10px;
+    height: 3px;
+    background: #2e7d32;
+    border-radius: 2px;
+}
+
+.lineLegendBlack {
+    width: 10px;
+    height: 3px;
+    background: #000;
+    border-radius: 2px;
+}
+
+/* Card 4: Forecast Status */
+.statusContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.riskText {
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #666;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.riskMeter {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 5px;
+}
+
+.riskCircle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+.riskCircleFilled {
+    background: #bbb;
+    border: none;
+}
+
+/* Basic mock */
+.moderateLabel {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.facesRow {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 5px;
+}
+
+.faceItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #666;
+}
+
+.faceIcon {
+    font-size: 1.2rem;
+}

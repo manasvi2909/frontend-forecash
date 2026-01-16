@@ -1,11 +1,19 @@
 // src/pages/Login.jsx
 import React, { useState } from 'react';
 import { FaGoogle, FaApple, FaFacebook, FaEye, FaEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Simulate login
+        console.log("Logged in");
+        navigate('/dashboard');
+    };
 
     return (
         <div className={styles.container}>
@@ -21,7 +29,7 @@ const Login = () => {
                     <button className={styles.socialBtn}><FaFacebook /></button>
                 </div>
 
-                <form className={styles.form}>
+                <form className={styles.form} onSubmit={handleSubmit}>
                     <div className={styles.inputGroup}>
                         <label>Username</label>
                         <input type="text" className={styles.input} />

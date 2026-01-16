@@ -1,0 +1,685 @@
+/* src/pages/Dashboard.module.css */
+.container {
+    display: flex;
+    height: 100vh;
+    background-color: #e6e6e6;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    overflow: hidden;
+}
+
+/* Sidebar */
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 90px;
+    background: rgba(235, 235, 235, 0.65);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0;
+    transition: width 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    z-index: 1000;
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    opacity: 0.9;
+}
+
+.sidebar:hover {
+    width: 320px;
+    background: rgba(240, 240, 240, 0.8);
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    margin-bottom: 3rem;
+    height: 60px;
+    white-space: nowrap;
+}
+
+.logoIcon {
+    width: 50px;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.logoLabel {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-left: 20px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    color: #333;
+}
+
+.sidebar:hover .logoLabel {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.logoLabel b {
+    color: #2e7d32;
+}
+
+.sidebarMenu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex: 1;
+}
+
+.menuItem {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-left: 20px;
+    cursor: pointer;
+    white-space: nowrap;
+    position: relative;
+    border-radius: 30px;
+}
+
+/* Active State (Pill) */
+/* Active State (Square) */
+.activeItem {
+    background: #000;
+    color: #fff;
+    width: 50px;
+    overflow: hidden;
+    transition: width 0.4s ease;
+    padding-left: 12px;
+    /* Center 24px icon visually */
+    border-radius: 12px;
+}
+
+.activeItem svg {
+    fill: #fff;
+    min-width: 24px;
+}
+
+.sidebar:hover .activeItem {
+    width: 260px;
+}
+
+/* Inactive Icons (Circle) */
+.iconCircle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #fff;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+
+.iconCircle:hover {
+    transform: scale(1.05);
+}
+
+.activeIcon {
+    background: #000;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Labels */
+.menuLabel {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.1s;
+    color: #000;
+}
+
+.activeItem .menuLabel {
+    color: #fff;
+}
+
+.sidebar:hover .menuLabel {
+    opacity: 1;
+}
+
+.sidebarBottom {
+    padding-bottom: 2rem;
+    margin-top: auto;
+}
+
+
+/* Main Content */
+.main {
+    margin-left: 90px;
+    flex: 1;
+    padding: 1.5rem 2rem 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    height: 60px;
+}
+
+.brandTitle {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #333;
+    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.headerLogo {
+    height: 40px;
+    width: auto;
+}
+
+.brandTitle span {
+    color: #333;
+}
+
+.brandTitle b {
+    color: #2e7d32;
+}
+
+/* Header Controls */
+.headerControls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.controlBtn {
+    background: #fff;
+    border: none;
+    border-radius: 30px;
+    height: 45px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    font-size: 0.9rem;
+}
+
+.iconCircle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+.userPill {
+    background: #fff;
+    border-radius: 30px;
+    padding: 5px 5px 5px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    font-weight: 600;
+}
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Grid System */
+.grid {
+    display: grid;
+    grid-template-columns: 260px 1fr 1fr 140px;
+    grid-template-rows: 45% 48%;
+    /* Bottom row slightly taller for graph */
+    gap: 20px;
+    height: calc(100vh - 120px);
+    overflow: hidden;
+}
+
+/* Common Card Style */
+.card {
+    background: #fff;
+    border-radius: 30px;
+    padding: 1.5rem;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* COL 1: Visual Composition (Top) */
+.visualContainer {
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    border-radius: 30px;
+    background: transparent;
+    padding: 0;
+}
+
+.visualBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75%;
+    /* Shorter green card */
+    border-radius: 30px;
+    overflow: hidden;
+    z-index: 1;
+    /* This background is the "card" container for the gradient/image */
+}
+
+.bgImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sphere {
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    width: 70%;
+    z-index: 3;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+}
+
+.chrome {
+    position: absolute;
+    top: 15%;
+    right: -15%;
+    width: 90%;
+    z-index: 2;
+    opacity: 0.9;
+}
+
+.blurOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45%;
+    z-index: 4;
+    border-radius: 30px;
+    /* Fully rounded to look like separate card */
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(210, 210, 210, 0.9) 100%);
+    backdrop-filter: blur(30px);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+    /* Slight shadow to separate from bg */
+}
+
+/* COL 1: Credit Score (Bottom) */
+.creditCard {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gaugeWrapper {
+    position: relative;
+    width: 180px;
+    height: 100px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.gaugeArch {
+    width: 180px;
+    height: 180px;
+    border: 15px solid #eee;
+    border-radius: 50%;
+    border-top-color: #000;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: #000;
+    transform: rotate(45deg);
+    box-sizing: border-box;
+}
+
+.scoreText {
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.scoreNumber {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.scoreLabel {
+    font-size: 0.7rem;
+    /* Decreased size */
+    color: #666;
+    margin-top: 5px;
+}
+
+/* COL 2: Spending Profile (Bubbles) */
+.spendingCard {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.bubbleContainer {
+    flex: 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+}
+
+.bubbleGreen {
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    width: 110px;
+    height: 110px;
+    background: #73A981;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    z-index: 1;
+}
+
+.bubbleBlack {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    width: 70px;
+    height: 70px;
+    background: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    z-index: 2;
+    border: 3px solid #fff;
+}
+
+.bubbleGrey {
+    position: absolute;
+    top: 55%;
+    left: 45%;
+    width: 50px;
+    height: 50px;
+    background: #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.8rem;
+    z-index: 2;
+    border: 3px solid #fff;
+}
+
+.legendList {
+    font-size: 0.6rem;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    justify-content: center;
+}
+
+.legendRow {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+/* COL 3: Tax Breakdown */
+.taxCard {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.graphHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1rem;
+}
+
+.barGraph {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.barCol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    width: 8px;
+}
+
+.barFill {
+    width: 100%;
+    background: #bbb;
+    border-radius: 4px;
+    position: relative;
+}
+
+.barTop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: #9bc5a6;
+    border-radius: 4px;
+}
+
+.barLabel {
+    font-size: 0.6rem;
+    color: #999;
+}
+
+.taxDetails {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.taxRow {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* COL 2 + 3: Cash Flow (Bottom Span) */
+.cashFlowCard {
+    grid-column: 2 / span 2;
+    grid-row: 2;
+}
+
+.cashHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.bigAmount {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.subtitle {
+    font-size: 0.8rem;
+    color: #888;
+    margin-left: 10px;
+}
+
+.timeFilters {
+    background: #e0e0e0;
+    padding: 4px;
+    border-radius: 20px;
+    display: flex;
+    gap: 4px;
+}
+
+.filter {
+    padding: 4px 12px;
+    border-radius: 16px;
+    border: none;
+    font-size: 0.7rem;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 600;
+    color: #666;
+}
+
+.filterActive {
+    background: #000;
+    color: #fff;
+}
+
+.lineGraph {
+    flex: 1;
+    margin-top: 1rem;
+    width: 100%;
+    overflow: hidden;
+    /* Ensure cutting */
+    position: relative;
+}
+
+.graphSvg {
+    width: 100%;
+    height: 100%;
+
+}
+
+/* COL 4: Right Cards (Inside white box) */
+.rightWrapper {
+    grid-column: 4;
+    grid-row: 1;
+    background: #fff;
+    border-radius: 30px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.rightWrapperBottom {
+    grid-column: 4;
+    grid-row: 2;
+    background: #fff;
+    border-radius: 30px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.greenFillContainer {
+    background: #e6e6e6;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.greenFillBar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #73A981;
+    z-index: 0;
+    transition: height 1s ease-out;
+}
+
+.greenCardContent {
+    position: relative;
+    z-index: 1;
+    color: #333;
+    font-weight: 600;
+}
+
+.greenCardInner,
+.greenCardInnerVertical {
+    display: none;
+}
+
+.pillValue {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.pillLabel {
+    font-size: 0.8rem;
+    opacity: 0.9;
+    max-width: 80%;
+    margin-bottom: 5px;
+}

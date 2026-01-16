@@ -20,7 +20,7 @@ const GoalsPart2 = () => {
         e.preventDefault();
         console.log("Goals Part 2 Submitted", { selectedTags });
         // Navigate to Tax Details
-        navigate('/tax-details');
+        navigate('/tax-details-2');
     };
 
     return (
